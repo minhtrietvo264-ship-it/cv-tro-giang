@@ -32,12 +32,10 @@
         .info-container { text-align: left; display: inline-block; margin-top: 10px; }
         .info-text { font-size: 0.95em; margin-bottom: 8px; padding: 5px 10px; border-radius: 5px; }
         
-        /* Hiệu ứng khi di chuột vào dòng thông tin */
         .info-text:hover { background: #f8f9fa; transform: translateX(10px); color: #007bff; }
 
         .objective { text-align: left; border-top: 2px solid #343a40; margin-top: 25px; padding-top: 20px; }
 
-        /* Nút bấm có hiệu ứng động mạnh mẽ */
         .btn { 
             background: #343a40; color: white; width: 100%; padding: 15px; 
             margin-top: 15px; border: none; border-radius: 12px; 
@@ -48,14 +46,12 @@
             background: #000; transform: translateY(-3px); 
             box-shadow: 0 6px 12px rgba(0,0,0,0.2); 
         }
-        .btn:active { transform: translateY(0); }
 
-        /* Nội dung hiển thị */
         .content { 
             display: none; padding: 20px; text-align: left; 
             background: #ffffff; border: 1px solid #eee; 
             border-radius: 12px; margin-top: 10px;
-            animation: slideDown 0.4s ease-out; /* Hiệu ứng rớt xuống khi mở */
+            animation: slideDown 0.4s ease-out;
         }
         
         @keyframes slideDown {
@@ -65,15 +61,15 @@
 
         .content img { 
             width: 100%; border-radius: 10px; margin: 15px 0; 
-            filter: grayscale(100%); /* Ảnh trắng đen mặc định */
+            filter: grayscale(100%);
         }
         .content img:hover { 
-            filter: grayscale(0%); /* Hiện màu khi di chuột vào ảnh */
+            filter: grayscale(0%);
             transform: scale(1.02);
         }
 
         .school-block { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #f1f1f1; }
-        ul { padding-left: 20px; }
+        ul { padding-left: 20px; margin-top: 5px; }
         li { margin-bottom: 5px; }
     </style>
 </head>
@@ -101,14 +97,15 @@
     <div id="hoc-van" class="content">
         <div class="school-block">
             <b>🏠 Đại học Khoa học Tự nhiên - ĐHQG TP HCM</b>
-            <p>Ngành máy tính và Công nghệ thông tin</p>
+            <p>Nhóm Ngành máy tính và Công nghệ thông tin</p>
             <img src="ảnh thông tin hcmus.jpg" alt="HCMUS">
         </div>
 
         <div class="school-block">
             <b>🏠 THCS-THPT Nguyễn Khuyến</b>
             <ul>
-                <li>3 năm lớp đầu, Tuyển thẳng</li>
+                <li>Tuyển thẳng Nguyễn Khuyến</li>
+                <li>Ba năm cấp ba học lớp đầu của trường</li>
                 <li>Top 10 BXH lớp, Top 100 khối A00</li>
                 <li>Điểm thi THPTQG cao thứ 3 của lớp</li>
             </ul>
@@ -117,7 +114,7 @@
 
         <div class="school-block">
             <b>🏠 THCS Tương Bình Hiệp</b>
-            <p>Thủ Khoa Toán kì thi Tuyển sinh vào 10 (2022)</p>
+            <p>Thủ Khoa Toán kì thi Tuyển sinh vào 10 (2022) của trường</p>
         </div>
 
         <div class="school-block">
@@ -127,8 +124,17 @@
 
     <button class="btn" onclick="toggleSection('diem-manh')">💪 ĐIỂM MẠNH & HẠN CHẾ (Click xem)</button>
     <div id="diem-manh" class="content">
-        <p>✅ <b>Điểm mạnh:</b> Thuyết trình ổn, kiên nhẫn, tư duy tốt.</p>
-        <p>❌ <b>Hạn chế:</b> Kinh nghiệm thực tế chưa nhiều, đang sắp xếp lịch học ĐH.</p>
+        <p>✅ <b>Điểm mạnh:</b></p>
+        <ul>
+            <li>Chịu khó giảng giải bài tập cho học sinh đến khi hiểu bài.</li>
+            <li>Thuyết trình ổn, kiên nhẫn trong công việc.</li>
+            <li>Năng lực tư duy tốt, ham học hỏi.</li>
+        </ul>
+        <p>❌ <b>Hạn chế:</b></p>
+        <ul>
+            <li>Kinh nghiệm thực tế chưa nhiều.</li>
+            <li>Đang sắp xếp lịch học ĐH để cân bằng công việc.</li>
+        </ul>
     </div>
 </div>
 
