@@ -5,74 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV TRỢ GIẢNG - VÕ MINH TRIẾT</title>
     <style>
-        /* Hiệu ứng mượt mà cho toàn bộ trang */
-        * { transition: all 0.3s ease; }
+        /* Tối ưu hóa chuyển động */
+        * { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-sizing: border-box; }
 
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #e9ecef; display: flex; justify-content: center; padding: 20px; color: #212529; }
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
+            display: flex; justify-content: center; align-items: flex-start;
+            padding: 40px 20px; color: #2d3436; min-height: 100vh; margin: 0;
+        }
         
         .cv-card { 
-            background: white; width: 100%; max-width: 550px; padding: 35px; 
-            border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-            text-align: center; border: 1px solid #dee2e6;
+            background: #ffffff; width: 100%; max-width: 600px; padding: 40px; 
+            border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+            text-align: center; border: 1px solid rgba(255,255,255,0.3);
+            position: relative;
         }
 
-        /* Ảnh đại diện động */
+        /* Ảnh đại diện chuyên nghiệp */
         .avatar { 
-            width: 140px; height: 140px; border-radius: 50%; 
-            border: 5px solid #343a40; margin-bottom: 15px; 
+            width: 150px; height: 150px; border-radius: 50%; 
+            border: 6px solid #f8f9fa; margin-bottom: 20px; 
             object-fit: cover; cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .avatar:hover { 
-            transform: scale(1.1) rotate(5deg); 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateY(-10px) scale(1.05) rotate(3deg); 
+            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
         }
 
-        h2 { margin: 10px 0; letter-spacing: 2px; text-transform: uppercase; color: #000; }
+        h2 { margin: 10px 0; font-size: 28px; letter-spacing: 3px; font-weight: 800; color: #2d3436; }
         
-        .info-container { text-align: left; display: inline-block; margin-top: 10px; }
-        .info-text { font-size: 0.95em; margin-bottom: 8px; padding: 5px 10px; border-radius: 5px; }
+        .info-container { text-align: left; display: inline-block; margin-top: 15px; width: 100%; max-width: 400px; }
+        .info-text { font-size: 0.95em; margin-bottom: 10px; padding: 12px 15px; border-radius: 15px; background: #fdfdfd; border: 1px solid #f1f1f1; }
         
-        /* Link Facebook */
-        .info-text a { text-decoration: none; color: inherit; font-weight: bold; }
-        .info-text:hover { background: #f8f9fa; transform: translateX(10px); color: #007bff; }
+        /* Facebook Link Style */
+        .info-text a { text-decoration: none; color: #0984e3; font-weight: 600; }
+        .info-text:hover { background: #ffffff; transform: scale(1.02); box-shadow: 0 5px 15px rgba(0,0,0,0.05); color: #0984e3; }
 
-        .objective { text-align: left; border-top: 2px solid #343a40; margin-top: 25px; padding-top: 20px; }
+        .objective { text-align: left; border-top: 2px dashed #dfe6e9; margin-top: 30px; padding-top: 25px; }
+        .objective h3 { color: #2d3436; font-size: 1.2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
 
+        /* Nút bấm thiết kế Glassmorphism */
         .btn { 
-            background: #343a40; color: white; width: 100%; padding: 15px; 
-            margin-top: 15px; border: none; border-radius: 12px; 
-            cursor: pointer; font-weight: bold; font-size: 16px; 
-            text-transform: uppercase; position: relative; overflow: hidden;
+            background: #2d3436; color: white; width: 100%; padding: 18px; 
+            margin-top: 20px; border: none; border-radius: 18px; 
+            cursor: pointer; font-weight: 700; font-size: 15px; 
+            text-transform: uppercase; letter-spacing: 1px;
+            box-shadow: 0 8px 15px rgba(45, 52, 54, 0.2);
         }
         .btn:hover { 
-            background: #000; transform: translateY(-3px); 
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2); 
+            background: #000; transform: translateY(-4px); 
+            box-shadow: 0 12px 20px rgba(0,0,0,0.3); 
         }
 
+        /* Nội dung khi mở rộng */
         .content { 
-            display: none; padding: 20px; text-align: left; 
-            background: #ffffff; border: 1px solid #eee; 
-            border-radius: 12px; margin-top: 10px;
-            animation: slideDown 0.4s ease-out;
+            display: none; padding: 25px; text-align: left; 
+            background: #fcfcfc; border: 1px solid #f1f1f1; 
+            border-radius: 20px; margin-top: 15px;
+            animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .content img { 
-            width: 100%; border-radius: 10px; margin: 15px 0; 
-            filter: grayscale(100%);
+            width: 100%; border-radius: 15px; margin: 20px 0; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .content img:hover { 
-            filter: grayscale(0%);
-            transform: scale(1.02);
-        }
+        .content img:hover { transform: scale(1.03); filter: brightness(1.05); }
 
-        .school-block { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #f1f1f1; }
-        ul { padding-left: 20px; margin-top: 5px; }
-        li { margin-bottom: 5px; }
+        .school-block { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #f1f1f1; }
+        .school-block:last-child { border-bottom: none; }
+        
+        ul { padding-left: 15px; list-style-type: none; }
+        li { margin-bottom: 10px; position: relative; padding-left: 20px; }
+        li::before { content: "•"; color: #0984e3; font-weight: bold; position: absolute; left: 0; }
+        li:hover { color: #0984e3; transform: translateX(5px); }
+        
+        b { color: #2d3436; }
+
+        /* Nút liên hệ nhanh */
+        .contact-group { 
+            display: flex; gap: 15px; margin-top: 35px; 
+            padding-top: 25px; border-top: 2px dashed #dfe6e9; 
+        }
+        .btn-contact { 
+            flex: 1; padding: 15px; border-radius: 15px; 
+            text-decoration: none; color: white; font-weight: bold; 
+            font-size: 15px; display: flex; align-items: center; 
+            justify-content: center; gap: 8px;
+        }
+        .zalo-color { background-color: #0068ff; }
+        .call-color { background-color: #27ae60; animation: ring 2s infinite; }
+
+        /* Hiệu ứng rung nhẹ cho nút gọi */
+        @keyframes ring {
+            0% { transform: scale(1); }
+            5% { transform: rotate(-3deg); }
+            10% { transform: rotate(3deg); }
+            15% { transform: rotate(-3deg); }
+            20% { transform: rotate(3deg); }
+            25% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -92,7 +131,7 @@
     
     <div class="objective">
         <h3>🎯 Mục tiêu ứng cử</h3>
-        <p>Mong muốn trở thành Trợ giảng để hỗ trợ học sinh nắm vững kiến thức, đồng thời rèn luyện kỹ năng sư phạm. Em muốn củng cố năng lực tư duy và thử sức giảng dạy chuyên nghiệp.</p>
+        <p>Mong muốn trở thành Trợ giảng để hỗ trợ học sinh nắm vững kiến thức, đồng thời rèn luyện kỹ năng sư phạm. Về bản thân, em muốn củng cố năng lực tư duy và thử sức giảng dạy chuyên nghiệp.</p>
     </div>
 
     <button class="btn" onclick="toggleSection('hoc-van')">🎓 TRÌNH ĐỘ HỌC VẤN </button>
@@ -142,8 +181,14 @@
         <p>❌ <b>Hạn chế:</b></p>
         <ul>
             <li>Kinh nghiệm thực tế chưa nhiều.</li>
+            <li>Kiến thức có thể bị giảm sút do chưa rèn luyện thường xuyên.</li>
             <li>Đang sắp xếp lịch học ĐH để cân bằng công việc.</li>
         </ul>
+    </div>
+
+    <div class="contact-group">
+        <a href="https://zalo.me/0372178339" target="_blank" class="btn-contact zalo-color">💬 Nhắn Zalo</a>
+        <a href="tel:0372178339" class="btn-contact call-color">📞 Gọi ngay</a>
     </div>
 </div>
 
