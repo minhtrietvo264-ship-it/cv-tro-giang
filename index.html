@@ -5,124 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV TRỢ GIẢNG - VÕ MINH TRIẾT</title>
     <style>
-        /* Tối ưu hóa chuyển động */
+        /* 1. Tối ưu Font và Reset */
         * { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-sizing: border-box; }
-
+        
         body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
             display: flex; justify-content: center; align-items: flex-start;
-            padding: 40px 20px; color: #2d3436; min-height: 100vh; margin: 0;
+            padding: 50px 20px; color: #2d3436; min-height: 100vh; margin: 0;
+            line-height: 1.6;
         }
         
         .cv-card { 
-            background: #ffffff; width: 100%; max-width: 600px; padding: 40px; 
-            border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+            background: #ffffff; width: 100%; 
+            max-width: 850px; 
+            padding: 50px; 
+            border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
             text-align: center; border: 1px solid rgba(255,255,255,0.3);
             position: relative;
         }
 
+        /* 2. Nút PDF nhỏ gọn ở góc phải */
+        .btn-pdf { 
+            position: absolute; top: 30px; right: 30px;
+            background: #d63031; color: white; padding: 10px 18px; 
+            border: none; border-radius: 12px; cursor: pointer; 
+            font-weight: 600; font-size: 12px; text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(214, 48, 49, 0.2);
+            display: flex; align-items: center; gap: 8px; z-index: 100;
+        }
+        .btn-pdf:hover { background: #c0392b; transform: scale(1.05); }
+
         .avatar { 
-            width: 150px; height: 150px; border-radius: 50%; 
-            border: 6px solid #f8f9fa; margin-bottom: 20px; 
-            object-fit: cover; cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .avatar:hover { 
-            transform: translateY(-10px) scale(1.05) rotate(3deg); 
-            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+            width: 170px; height: 170px; border-radius: 50%; 
+            border: 6px solid #fff; margin-bottom: 25px; 
+            object-fit: cover; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        h2 { margin: 10px 0; font-size: 28px; letter-spacing: 3px; font-weight: 800; color: #2d3436; }
+        h2 { margin: 10px 0; font-size: 34px; letter-spacing: 4px; font-weight: 800; color: #2d3436; }
         
-        .info-container { text-align: left; display: inline-block; margin-top: 15px; width: 100%; max-width: 400px; }
-        .info-text { font-size: 0.95em; margin-bottom: 10px; padding: 12px 15px; border-radius: 15px; background: #fdfdfd; border: 1px solid #f1f1f1; }
+        /* 3. Grid thông tin liên hệ */
+        .info-container { 
+            text-align: left; display: grid; grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; margin-top: 30px; width: 100%;
+        }
         
+        .info-text { 
+            font-size: 0.95em; padding: 16px 22px; border-radius: 18px; 
+            background: #f8fafc; border: 1px solid #edf2f7; 
+        }
+        .info-text:hover { background: #fff; border-color: #0984e3; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .info-text b { color: #4a5568; margin-right: 5px; }
         .info-text a { text-decoration: none; color: #0984e3; font-weight: 600; }
-        .info-text:hover { background: #ffffff; transform: scale(1.02); box-shadow: 0 5px 15px rgba(0,0,0,0.05); color: #0984e3; }
 
-        .objective { text-align: left; border-top: 2px dashed #dfe6e9; margin-top: 30px; padding-top: 25px; }
-        .objective h3 { color: #2d3436; font-size: 1.2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .objective { text-align: left; border-top: 2px dashed #e2e8f0; margin-top: 40px; padding-top: 30px; }
+        .objective h3 { color: #2d3436; font-size: 1.4em; margin-bottom: 15px; }
 
+        /* 4. Nút bấm tương tác */
         .btn { 
-            background: #2d3436; color: white; width: 100%; padding: 18px; 
-            margin-top: 20px; border: none; border-radius: 18px; 
+            background: #2d3436; color: white; width: 100%; padding: 20px; 
+            margin-top: 20px; border: none; border-radius: 20px; 
             cursor: pointer; font-weight: 700; font-size: 15px; 
-            text-transform: uppercase; letter-spacing: 1px;
-            box-shadow: 0 8px 15px rgba(45, 52, 54, 0.2);
+            text-transform: uppercase; letter-spacing: 1.5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
-        .btn:hover { 
-            background: #000; transform: translateY(-4px); 
-            box-shadow: 0 12px 20px rgba(0,0,0,0.3); 
-        }
-
-        /* Nút Xuất PDF đặc biệt */
-        .btn-pdf {
-            background: #d63031;
-            margin-bottom: 10px;
-        }
+        .btn:hover { background: #000; transform: translateY(-3px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
 
         .content { 
-            display: none; padding: 25px; text-align: left; 
+            display: none; padding: 35px; text-align: left; 
             background: #fcfcfc; border: 1px solid #f1f1f1; 
             border-radius: 20px; margin-top: 15px;
-            animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideUp 0.5s ease-out;
         }
         
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .content img { 
-            width: 100%; border-radius: 15px; margin: 20px 0; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .school-block { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #f1f1f1; }
+        .school-block { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #edf2f7; }
         .school-block:last-child { border-bottom: none; }
         
         ul { padding-left: 15px; list-style-type: none; }
-        li { margin-bottom: 10px; position: relative; padding-left: 20px; }
-        li::before { content: "•"; color: #0984e3; font-weight: bold; position: absolute; left: 0; }
-
-        /* Nút liên hệ nhanh */
+        li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        li::before { content: "✔"; color: #27ae60; font-weight: bold; position: absolute; left: 0; }
+        
+        /* 5. Nhóm liên hệ Zalo/Phone */
         .contact-group { 
-            display: flex; gap: 15px; margin-top: 35px; 
-            padding-top: 25px; border-top: 2px dashed #dfe6e9; 
+            display: flex; gap: 20px; margin-top: 45px; 
+            padding-top: 35px; border-top: 2px dashed #e2e8f0; 
         }
         .btn-contact { 
-            flex: 1; padding: 15px; border-radius: 15px; 
+            flex: 1; padding: 20px; border-radius: 18px; 
             text-decoration: none; color: white; font-weight: bold; 
-            font-size: 15px; display: flex; align-items: center; 
-            justify-content: center; gap: 8px;
-            animation: softBuzz 3s infinite ease-in-out; /* Rung nhẹ nhàng */
+            font-size: 16px; display: flex; align-items: center; 
+            justify-content: center; gap: 10px;
+            animation: softRing 4s infinite;
         }
-        .zalo-color { background-color: #0068ff; animation-delay: 0.5s; }
-        .call-color { background-color: #27ae60; }
+        .zalo-color { background-color: #0068ff; }
+        .call-color { background-color: #27ae60; animation-delay: 0.5s; }
 
-        /* Hiệu ứng rung nhẹ nhàng, tinh tế */
-        @keyframes softBuzz {
-            0%, 100% { transform: scale(1); }
-            45% { transform: scale(1.03); }
-            50% { transform: scale(1.03) rotate(1deg); }
-            55% { transform: scale(1.03) rotate(-1deg); }
-            60% { transform: scale(1.03) rotate(0); }
+        @keyframes softRing {
+            0%, 90%, 100% { transform: scale(1); }
+            93% { transform: scale(1.05) rotate(-2deg); }
+            95% { transform: scale(1.05) rotate(2deg); }
+            97% { transform: scale(1.05) rotate(-2deg); }
         }
 
-        /* Tối ưu khi in ra PDF */
+        /* 6. Tối ưu khi in ra PDF */
         @media print {
             body { background: white; padding: 0; }
-            .cv-card { box-shadow: none; border: none; max-width: 100%; }
-            .btn, .contact-group { display: none !important; } /* Ẩn nút khi in */
-            .content { display: block !important; border: none; padding: 10px 0; } /* Hiện hết nội dung */
-            .avatar { width: 120px; height: 120px; }
+            .cv-card { box-shadow: none; border: none; max-width: 100%; padding: 20px; }
+            .btn, .contact-group, .btn-pdf { display: none !important; }
+            .content { display: block !important; border: none; padding: 10px 0; }
+            .info-container { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .info-text { border: none; padding: 5px 0; background: none; }
+        }
+
+        @media (max-width: 650px) {
+            .info-container { grid-template-columns: 1fr; }
+            .btn-pdf { position: relative; top: 0; right: 0; margin: 0 auto 20px auto; width: fit-content; }
         }
     </style>
 </head>
 <body>
 
 <div class="cv-card">
+    <button class="btn-pdf" onclick="window.print()">📄 Xuất PDF</button>
+
     <img src="4dcf3db5-6f08-4361-beed-b94b82e144b7.jpg" alt="Võ Minh Triết" class="avatar">
     
     <h2>VÕ MINH TRIẾT</h2>
@@ -132,7 +142,7 @@
         <div class="info-text">📍 <b>Địa chỉ:</b> Thủ Dầu Một, Bình Dương</div>
         <div class="info-text">📧 <b>Email:</b> minhtrietvo264@gmail.com</div>
         <div class="info-text">📞 <b>Phone:</b> 0372178339</div>
-        <div class="info-text">🌐 <b>Facebook:</b> <a href="https://www.facebook.com/share/1HPKFDLcXp/?mibextid=wwXIfr" target="_blank">Võ Minh Triết</a></div>
+        <div class="info-text" style="grid-column: span 2;">🌐 <b>Facebook:</b> <a href="https://www.facebook.com/share/1HPKFDLcXp/?mibextid=wwXIfr" target="_blank">Võ Minh Triết</a></div>
     </div>
     
     <div class="objective">
@@ -140,14 +150,12 @@
         <p>Mong muốn trở thành Trợ giảng để hỗ trợ học sinh nắm vững kiến thức, đồng thời rèn luyện kỹ năng sư phạm. Về bản thân, em muốn củng cố năng lực tư duy và thử sức giảng dạy chuyên nghiệp.</p>
     </div>
 
-    <button class="btn btn-pdf" onclick="window.print()">📄 XUẤT FILE PDF / IN CV</button>
-
     <button class="btn" onclick="toggleSection('hoc-van')">🎓 TRÌNH ĐỘ HỌC VẤN </button>
     <div id="hoc-van" class="content">
         <div class="school-block">
             <b>🏠 Đại học Khoa học Tự nhiên - ĐHQG TP HCM</b>
             <p>Nhóm Ngành máy tính và Công nghệ thông tin</p>
-            <img src="ảnh thông tin hcmus.jpg" alt="HCMUS">
+            <img src="ảnh thông tin hcmus.jpg" alt="HCMUS" style="width:100%; border-radius:15px; margin-top:15px;">
         </div>
 
         <div class="school-block">
@@ -158,7 +166,7 @@
                 <li>Top 10 BXH lớp, Top 100 khối A00 trong các đợt khảo sát định kì.</li>
                 <li>Điểm thi THPTQG cao thứ 3 của lớp.</li>
             </ul>
-            <img src="94ffa72a-d42e-4649-b5fc-86a582f2796a.jpg" alt="Bang khen">
+            <img src="94ffa72a-d42e-4649-b5fc-86a582f2796a.jpg" alt="Bang khen" style="width:100%; border-radius:15px; margin-top:15px;">
         </div>
 
         <div class="school-block">
@@ -203,10 +211,15 @@
 <script>
     function toggleSection(id) {
         var x = document.getElementById(id);
-        if (x.style.display === "block") {
-            x.style.display = "none";
-        } else {
-            x.style.display = "block";
+        var isOpening = (x.style.display !== "block");
+        
+        x.style.display = isOpening ? "block" : "none";
+        
+        // Nếu đang mở, cuộn nhẹ màn hình tới phần đó
+        if (isOpening) {
+            setTimeout(() => {
+                x.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
         }
     }
 </script>
