@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV TRỢ GIẢNG</title>
+    <style>
+        /* Phần này để làm đẹp giao diện */
+        body { font-family: sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
+        .cv-card { background: white; width: 100%; max-width: 500px; padding: 20px; border-radius: 15px; shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
+        .avatar { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #007bff; margin-bottom: 10px; }
+        .btn { background: #007bff; color: white; width: 100%; padding: 12px; margin-top: 10px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .content { display: none; padding: 15px; text-align: left; background: #f9f9f9; border-radius: 8px; margin-top: 5px; }
+        .show { display: block; }
+    </style>
+</head>
+<body>
+
+<div class="cv-card">
+    <img src="https://via.placeholder.com/150" alt="Ảnh cá nhân" class="avatar">
+    
+    <h2> VÕ MINH TRIẾT</h2>
+    <p>📅 Ngày sinh: 26/4/2007</p>
+    <p>📍 Địa chỉ: Thủ Dầu Một, Bình Dương</p>
+    <p>📧 Email: minhtrietvo264@gmail.com</p>
+    <p>📞 Phone: 0372178339</p>
+    <p>🌐 Facebook: Võ Minh Triết </p>
+    
+    <div style="text-align: left; border-top: 1px solid #eee; padding-top: 10px;">
+        <h3 style="color: #007bff;">Mục tiêu ứng cử</h3>
+        <p>Mong muốn trở thành Trợ giảng để hỗ trợ học sinh nắm vững kiến thức, đồng thời rèn luyện kỹ năng sư phạm và quản lý lớp học.<b> Về cá nhân, em muốn củng cố năng lực tư duy và muốn thử sức giảng dạy.</p>
+    </div>
+
+    <button class="btn" onclick="toggleSection('hoc-van')">🎓 TRÌNH ĐỘ HỌC VẤN</button>
+    <div id="hoc-van" class="content">
+        <p><strong>Trường:</strong> Đại học Khoa học Tự nhiên - ĐHQG TP HCM</p>
+        <p><strong>Chuyên ngành:</strong> Nhóm Ngành máy tính và Công nghệ thông tin</p>
+        <img src="https://via.placeholder.com/300x200?text=Anh+Bang+Cap" style="width:100%;">
+    </div>
+
+    <button class="btn" onclick="toggleSection('diem-manh')">💪 ĐIỂM MẠNH & HẠN CHẾ</button>
+    <div id="diem-manh" class="content">
+        <p>✅ <b>Điểm mạnh:</b> Thuyết trình ổn, kiên nhẫn.</p> </b> Năng lưc tư duy ổn, ham học hỏi. </p>
+        <p>❌ <b>Hạn chế:</b> Chưa có nhiều kinh nghiệm xử lý tình huống bất ngờ.</p>
+        <img src="https://via.placeholder.com/300x200?text=Anh+Ky+Nang" style="width:100%;">
+    </div>
+</div>
+
+<script>
+    function toggleSection(id) {
+        var x = document.getElementById(id);
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
