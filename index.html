@@ -1,48 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV TRỢ GIẢNG</title>
+    <title>CV TRỢ GIẢNG - VÕ MINH TRIẾT</title>
     <style>
-        /* Phần này để làm đẹp giao diện */
-        body { font-family: sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
-        .cv-card { background: white; width: 100%; max-width: 500px; padding: 20px; border-radius: 15px; shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
-        .avatar { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #007bff; margin-bottom: 10px; }
-        .btn { background: #007bff; color: white; width: 100%; padding: 12px; margin-top: 10px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
-        .content { display: none; padding: 15px; text-align: left; background: #f9f9f9; border-radius: 8px; margin-top: 5px; }
-        .show { display: block; }
+        /* Hiệu ứng mượt mà cho toàn bộ trang */
+        * { transition: all 0.3s ease; }
+
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #e9ecef; display: flex; justify-content: center; padding: 20px; color: #212529; }
+        
+        .cv-card { 
+            background: white; width: 100%; max-width: 550px; padding: 35px; 
+            border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            text-align: center; border: 1px solid #dee2e6;
+        }
+
+        /* Ảnh đại diện động */
+        .avatar { 
+            width: 140px; height: 140px; border-radius: 50%; 
+            border: 5px solid #343a40; margin-bottom: 15px; 
+            object-fit: cover; cursor: pointer;
+        }
+        .avatar:hover { 
+            transform: scale(1.1) rotate(5deg); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        h2 { margin: 10px 0; letter-spacing: 2px; text-transform: uppercase; color: #000; }
+        
+        .info-container { text-align: left; display: inline-block; margin-top: 10px; }
+        .info-text { font-size: 0.95em; margin-bottom: 8px; padding: 5px 10px; border-radius: 5px; }
+        
+        /* Hiệu ứng khi di chuột vào dòng thông tin */
+        .info-text:hover { background: #f8f9fa; transform: translateX(10px); color: #007bff; }
+
+        .objective { text-align: left; border-top: 2px solid #343a40; margin-top: 25px; padding-top: 20px; }
+
+        /* Nút bấm có hiệu ứng động mạnh mẽ */
+        .btn { 
+            background: #343a40; color: white; width: 100%; padding: 15px; 
+            margin-top: 15px; border: none; border-radius: 12px; 
+            cursor: pointer; font-weight: bold; font-size: 16px; 
+            text-transform: uppercase; position: relative; overflow: hidden;
+        }
+        .btn:hover { 
+            background: #000; transform: translateY(-3px); 
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2); 
+        }
+        .btn:active { transform: translateY(0); }
+
+        /* Nội dung hiển thị */
+        .content { 
+            display: none; padding: 20px; text-align: left; 
+            background: #ffffff; border: 1px solid #eee; 
+            border-radius: 12px; margin-top: 10px;
+            animation: slideDown 0.4s ease-out; /* Hiệu ứng rớt xuống khi mở */
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content img { 
+            width: 100%; border-radius: 10px; margin: 15px 0; 
+            filter: grayscale(100%); /* Ảnh trắng đen mặc định */
+        }
+        .content img:hover { 
+            filter: grayscale(0%); /* Hiện màu khi di chuột vào ảnh */
+            transform: scale(1.02);
+        }
+
+        .school-block { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #f1f1f1; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 5px; }
     </style>
 </head>
 <body>
 
 <div class="cv-card">
-    <img src="https://via.placeholder.com/150" alt="Ảnh cá nhân" class="avatar">
+    <img src="4dcf3db5-6f08-4361-beed-b94b82e144b7.jpg" alt="Võ Minh Triết" class="avatar">
     
-    <h2> VÕ MINH TRIẾT</h2>
-    <p>📅 Ngày sinh: 26/4/2007</p>
-    <p>📍 Địa chỉ: Thủ Dầu Một, Bình Dương</p>
-    <p>📧 Email: minhtrietvo264@gmail.com</p>
-    <p>📞 Phone: 0372178339</p>
-    <p>🌐 Facebook: Võ Minh Triết </p>
+    <h2>VÕ MINH TRIẾT</h2>
     
-    <div style="text-align: left; border-top: 1px solid #eee; padding-top: 10px;">
-        <h3 style="color: #007bff;">Mục tiêu ứng cử</h3>
-        <p>Mong muốn trở thành Trợ giảng để hỗ trợ học sinh nắm vững kiến thức, đồng thời rèn luyện kỹ năng sư phạm và quản lý lớp học.<b> Về cá nhân, em muốn củng cố năng lực tư duy và muốn thử sức giảng dạy.</p>
+    <div class="info-container">
+        <div class="info-text">📅 <b>Ngày sinh:</b> 26/4/2007</div>
+        <div class="info-text">📍 <b>Địa chỉ:</b> Thủ Dầu Một, Bình Dương</div>
+        <div class="info-text">📧 <b>Email:</b> minhtrietvo264@gmail.com</div>
+        <div class="info-text">📞 <b>Phone:</b> 0372178339</div>
+        <div class="info-text">🌐 <b>Facebook:</b> Võ Minh Triết</div>
+    </div>
+    
+    <div class="objective">
+        <h3>🎯 Mục tiêu ứng cử</h3>
+        <p>Mong muốn trở thành Trợ giảng để hỗ trợ học sinh nắm vững kiến thức, đồng thời rèn luyện kỹ năng sư phạm. Em muốn củng cố năng lực tư duy và thử sức giảng dạy chuyên nghiệp.</p>
     </div>
 
-    <button class="btn" onclick="toggleSection('hoc-van')">🎓 TRÌNH ĐỘ HỌC VẤN</button>
+    <button class="btn" onclick="toggleSection('hoc-van')">🎓 TRÌNH ĐỘ HỌC VẤN (Click xem)</button>
     <div id="hoc-van" class="content">
-        <p><strong>Trường:</strong> Đại học Khoa học Tự nhiên - ĐHQG TP HCM</p>
-        <p><strong>Chuyên ngành:</strong> Nhóm Ngành máy tính và Công nghệ thông tin</p>
-        <img src="https://via.placeholder.com/300x200?text=Anh+Bang+Cap" style="width:100%;">
+        <div class="school-block">
+            <b>🏠 Đại học Khoa học Tự nhiên - ĐHQG TP HCM</b>
+            <p>Ngành máy tính và Công nghệ thông tin</p>
+            <img src="ảnh thông tin hcmus.jpg" alt="HCMUS">
+        </div>
+
+        <div class="school-block">
+            <b>🏠 THCS-THPT Nguyễn Khuyến</b>
+            <ul>
+                <li>3 năm lớp đầu, Tuyển thẳng</li>
+                <li>Top 10 BXH lớp, Top 100 khối A00</li>
+                <li>Điểm thi THPTQG cao thứ 3 của lớp</li>
+            </ul>
+            <img src="94ffa72a-d42e-4649-b5fc-86a582f2796a.jpg" alt="Bang khen">
+        </div>
+
+        <div class="school-block">
+            <b>🏠 THCS Tương Bình Hiệp</b>
+            <p>Thủ Khoa Toán kì thi Tuyển sinh vào 10 (2022)</p>
+        </div>
+
+        <div class="school-block">
+            <b>📜 Chứng chỉ: IELTS 5.5</b>
+        </div>
     </div>
 
-    <button class="btn" onclick="toggleSection('diem-manh')">💪 ĐIỂM MẠNH & HẠN CHẾ</button>
+    <button class="btn" onclick="toggleSection('diem-manh')">💪 ĐIỂM MẠNH & HẠN CHẾ (Click xem)</button>
     <div id="diem-manh" class="content">
-        <p>✅ <b>Điểm mạnh:</b> Thuyết trình ổn, kiên nhẫn.</p> </b> Năng lưc tư duy ổn, ham học hỏi. </p>
-        <p>❌ <b>Hạn chế:</b> Chưa có nhiều kinh nghiệm xử lý tình huống bất ngờ.</p>
-        <img src="https://via.placeholder.com/300x200?text=Anh+Ky+Nang" style="width:100%;">
+        <p>✅ <b>Điểm mạnh:</b> Thuyết trình ổn, kiên nhẫn, tư duy tốt.</p>
+        <p>❌ <b>Hạn chế:</b> Kinh nghiệm thực tế chưa nhiều, đang sắp xếp lịch học ĐH.</p>
     </div>
 </div>
 
