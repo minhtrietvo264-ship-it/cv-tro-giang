@@ -22,7 +22,6 @@
             position: relative;
         }
 
-        /* Ảnh đại diện chuyên nghiệp */
         .avatar { 
             width: 150px; height: 150px; border-radius: 50%; 
             border: 6px solid #f8f9fa; margin-bottom: 20px; 
@@ -39,14 +38,12 @@
         .info-container { text-align: left; display: inline-block; margin-top: 15px; width: 100%; max-width: 400px; }
         .info-text { font-size: 0.95em; margin-bottom: 10px; padding: 12px 15px; border-radius: 15px; background: #fdfdfd; border: 1px solid #f1f1f1; }
         
-        /* Facebook Link Style */
         .info-text a { text-decoration: none; color: #0984e3; font-weight: 600; }
         .info-text:hover { background: #ffffff; transform: scale(1.02); box-shadow: 0 5px 15px rgba(0,0,0,0.05); color: #0984e3; }
 
         .objective { text-align: left; border-top: 2px dashed #dfe6e9; margin-top: 30px; padding-top: 25px; }
         .objective h3 { color: #2d3436; font-size: 1.2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
 
-        /* Nút bấm thiết kế Glassmorphism */
         .btn { 
             background: #2d3436; color: white; width: 100%; padding: 18px; 
             margin-top: 20px; border: none; border-radius: 18px; 
@@ -59,7 +56,12 @@
             box-shadow: 0 12px 20px rgba(0,0,0,0.3); 
         }
 
-        /* Nội dung khi mở rộng */
+        /* Nút Xuất PDF đặc biệt */
+        .btn-pdf {
+            background: #d63031;
+            margin-bottom: 10px;
+        }
+
         .content { 
             display: none; padding: 25px; text-align: left; 
             background: #fcfcfc; border: 1px solid #f1f1f1; 
@@ -76,7 +78,6 @@
             width: 100%; border-radius: 15px; margin: 20px 0; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .content img:hover { transform: scale(1.03); filter: brightness(1.05); }
 
         .school-block { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #f1f1f1; }
         .school-block:last-child { border-bottom: none; }
@@ -84,9 +85,6 @@
         ul { padding-left: 15px; list-style-type: none; }
         li { margin-bottom: 10px; position: relative; padding-left: 20px; }
         li::before { content: "•"; color: #0984e3; font-weight: bold; position: absolute; left: 0; }
-        li:hover { color: #0984e3; transform: translateX(5px); }
-        
-        b { color: #2d3436; }
 
         /* Nút liên hệ nhanh */
         .contact-group { 
@@ -98,19 +96,27 @@
             text-decoration: none; color: white; font-weight: bold; 
             font-size: 15px; display: flex; align-items: center; 
             justify-content: center; gap: 8px;
+            animation: softBuzz 3s infinite ease-in-out; /* Rung nhẹ nhàng */
         }
-        .zalo-color { background-color: #0068ff; }
-        .call-color { background-color: #27ae60; animation: ring 2s infinite; }
+        .zalo-color { background-color: #0068ff; animation-delay: 0.5s; }
+        .call-color { background-color: #27ae60; }
 
-        /* Hiệu ứng rung nhẹ cho nút gọi */
-        @keyframes ring {
-            0% { transform: scale(1); }
-            5% { transform: rotate(-3deg); }
-            10% { transform: rotate(3deg); }
-            15% { transform: rotate(-3deg); }
-            20% { transform: rotate(3deg); }
-            25% { transform: scale(1); }
-            100% { transform: scale(1); }
+        /* Hiệu ứng rung nhẹ nhàng, tinh tế */
+        @keyframes softBuzz {
+            0%, 100% { transform: scale(1); }
+            45% { transform: scale(1.03); }
+            50% { transform: scale(1.03) rotate(1deg); }
+            55% { transform: scale(1.03) rotate(-1deg); }
+            60% { transform: scale(1.03) rotate(0); }
+        }
+
+        /* Tối ưu khi in ra PDF */
+        @media print {
+            body { background: white; padding: 0; }
+            .cv-card { box-shadow: none; border: none; max-width: 100%; }
+            .btn, .contact-group { display: none !important; } /* Ẩn nút khi in */
+            .content { display: block !important; border: none; padding: 10px 0; } /* Hiện hết nội dung */
+            .avatar { width: 120px; height: 120px; }
         }
     </style>
 </head>
@@ -133,6 +139,8 @@
         <h3>🎯 Mục tiêu ứng cử</h3>
         <p>Mong muốn trở thành Trợ giảng để hỗ trợ học sinh nắm vững kiến thức, đồng thời rèn luyện kỹ năng sư phạm. Về bản thân, em muốn củng cố năng lực tư duy và thử sức giảng dạy chuyên nghiệp.</p>
     </div>
+
+    <button class="btn btn-pdf" onclick="window.print()">📄 XUẤT FILE PDF / IN CV</button>
 
     <button class="btn" onclick="toggleSection('hoc-van')">🎓 TRÌNH ĐỘ HỌC VẤN </button>
     <div id="hoc-van" class="content">
